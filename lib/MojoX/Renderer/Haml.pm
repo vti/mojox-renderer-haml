@@ -7,6 +7,7 @@ use base 'Mojo::Base';
 
 use Text::Haml;
 use Mojo::ByteStream 'b';
+use Mojo::Exception;
 
 our $VERSION = '0.010101';
 
@@ -41,7 +42,7 @@ sub _render {
 
     # Interpret again
     if ($haml && $haml->compiled) {
-        $$output = $haml->interpret(%{$c->stash});
+        $$output = $haml->interpret(c => $c, app => $c->app);
     }
 
     # No cache
@@ -57,7 +58,7 @@ sub _render {
 
         # Try template
         if (-r $path) {
-            $$output = $haml->render_file($path, %{$c->stash});
+            $$output = $haml->render_file($path, c => $c, app => $c->app);
         }
 
         # Try DATA section
@@ -74,10 +75,13 @@ sub _render {
     }
 
     unless (defined $$output) {
-        my $e = $$output;
         $$output = '';
+
+        my $e = Mojo::Exception->new($haml->error);
+
         $c->app->log->error( qq/Template error in "$t": / . $haml->error);
-        $c->render_exception($haml->error);
+
+        $c->render_exception($e);
 
         return 0;
     }
