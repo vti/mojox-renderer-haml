@@ -50,8 +50,18 @@ sub _render {
         $haml ||= Text::Haml->new(escape => $ESCAPE);
 
         if ($r->can('helper')) {
+            my $content = delete $r->helper->{content};
+
             $haml->helpers_arg($c);
             $haml->helpers($r->helper);
+
+            $haml->helpers->{content} = sub {
+                my $c = shift;
+
+                my $content = $c->stash('content');
+
+                return $content->{content};
+            }
         }
 
         $c->app->log->debug("Rendering $path");

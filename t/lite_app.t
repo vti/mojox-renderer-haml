@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 9;
+use Test::More tests => 15;
 
 use Test::Mojo;
 use Mojo::Client;
@@ -18,6 +18,8 @@ get '/' => 'root';
 
 get '/error' => 'error';
 
+get '/with_wrapper' => 'with_wrapper';
+
 my $client = Mojo::Client->new(app => app);
 app->client($client);
 
@@ -29,6 +31,12 @@ $t->get_ok('/')->status_is(200)->content_is("<foo></foo>\n");
 
 # Cache hit
 $t->get_ok('/')->status_is(200)->content_is("<foo></foo>\n");
+
+# With wrapper
+$t->get_ok('/with_wrapper')->status_is(200)->content_is("<foo>Hello!\n</foo>\n");
+
+# Not found
+$t->get_ok('/foo')->status_is(404)->content_is("Not found\n");
 
 # Error
 $t->get_ok('/error')->status_is(500)->content_like(qr/^Exception:\nsyntax error/);
@@ -48,3 +56,10 @@ Exception:
 
 @@ not_found.html.haml
 Not found
+
+@@ with_wrapper.html.haml
+- layout 'wrapper';
+Hello!
+
+@@ layouts/wrapper.html.haml
+%foo= content
