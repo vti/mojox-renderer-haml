@@ -34,41 +34,32 @@ sub _render {
 
     my $list = join ', ', sort keys %{$c->stash};
     my $cache = b("$path($list)")->md5_sum->to_string;
+
     $r->{_haml_cache} ||= {};
 
     my $t = $r->template_name($options);
 
     my $haml = $r->{_haml_cache}->{$cache};
 
+    my @args = (c => $c, app => $c->app, %{$c->stash});
+
     # Interpret again
     if ($haml && $haml->compiled) {
-        $$output = $haml->interpret(c => $c, app => $c->app);
+        $haml->helpers_arg($c);
+
+        $$output = $haml->interpret(c => $c, @args);
     }
 
     # No cache
     else {
         $haml ||= Text::Haml->new(escape => $ESCAPE);
 
-        if ($r->can('helper')) {
-            my $content = delete $r->helper->{content};
-
-            $haml->helpers_arg($c);
-            $haml->helpers($r->helper);
-
-            $haml->helpers->{content} = sub {
-                my $c = shift;
-
-                my $content = $c->stash('content');
-
-                return $content->{content};
-            }
-        }
-
-        $c->app->log->debug("Rendering $path");
+        $haml->helpers_arg($c);
+        $haml->helpers($r->helper);
 
         # Try template
         if (-r $path) {
-            $$output = $haml->render_file($path, c => $c, app => $c->app);
+            $$output = $haml->render_file($path, @args);
         }
 
         # Try DATA section

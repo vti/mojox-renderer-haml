@@ -16,9 +16,6 @@ sub register {
 
     # Add "haml" handler
     $app->renderer->add_handler(haml => $haml);
-
-    # Set default handler
-    $app->renderer->default_handler('haml');
 }
 
 1;
