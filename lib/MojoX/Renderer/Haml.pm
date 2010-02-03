@@ -5,9 +5,9 @@ use strict;
 
 use base 'Mojo::Base';
 
-use Text::Haml;
 use Mojo::ByteStream 'b';
 use Mojo::Exception;
+use Text::Haml;
 
 our $VERSION = '0.010101';
 
@@ -41,13 +41,13 @@ sub _render {
 
     my $haml = $r->{_haml_cache}->{$cache};
 
-    my @args = (c => $c, app => $c->app, %{$c->stash});
+    my %args = (app => $c->app, %{$c->stash});
 
     # Interpret again
     if ($haml && $haml->compiled) {
         $haml->helpers_arg($c);
 
-        $$output = $haml->interpret(c => $c, @args);
+        $$output = $haml->interpret(%args);
     }
 
     # No cache
@@ -59,7 +59,7 @@ sub _render {
 
         # Try template
         if (-r $path) {
-            $$output = $haml->render_file($path, @args);
+            $$output = $haml->render_file($path, %args);
         }
 
         # Try DATA section
