@@ -9,7 +9,7 @@ use Mojo::ByteStream 'b';
 use Mojo::Exception;
 use Text::Haml;
 
-our $VERSION = '0.010101';
+our $VERSION = '0.990101';
 
 sub build {
     my $self = shift->SUPER::new(@_);
@@ -64,7 +64,7 @@ sub _render {
 
         # Try DATA section
         elsif (my $d = $r->get_inline_template($c, $t)) {
-            $$output = $haml->render($d, %{$c->stash});
+            $$output = $haml->render($d, %args);
         }
 
         # No template

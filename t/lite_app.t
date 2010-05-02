@@ -24,11 +24,8 @@ get '/error' => 'error';
 
 get '/with_wrapper' => 'with_wrapper';
 
-my $client = Mojo::Client->new(app => app);
-app->client($client);
-
 my $t = Test::Mojo->new;
-$t->client($client);
+$t->client(Mojo::Client->new);
 
 # No cache
 $t->get_ok('/')->status_is(200)->content_is("<foo>1 + 1 &lt; 2</foo>\n");
