@@ -32,7 +32,10 @@ WriteMakefile(
                 build_requires     => {},
                 configure_requires => {}
             },
-            PREREQ_PM => {'Text::Haml' => '0.990103'}
+            PREREQ_PM => {
+                'Text::Haml' => '0.990103',
+                'Mojo'       => '0.999924'
+            }
         )
     ),
 
