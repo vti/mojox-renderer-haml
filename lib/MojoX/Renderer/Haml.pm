@@ -93,3 +93,32 @@ sub _render {
 }
 
 1;
+
+=head2 NAME
+
+MojoX::Renderer::Haml - Mojolicious renderer for HAML templates. 
+
+=head2 SYNOPSIS
+
+   my $haml = MojoX::Renderer::Haml->build(%$args, mojo => $app);
+
+   # Add "haml" handler
+   $app->renderer->add_handler(haml => $haml);
+
+=head2 DESCRIPTION
+
+This module is a renderer for L<HTML::Haml> templates. normally, you 
+just want to use L<Mojolicious::Plugin::HamlRenderer>.
+
+=head1 AUTHOR
+
+Viacheslav Tykhanovskyi, C<viacheslav.t@gmail.com>.
+
+=head1 COPYRIGHT
+
+Copyright (C) 2008-2009, Viacheslav Tykhanovskyi.
+
+This program is free software, you can redistribute it and/or modify it under
+the same terms as Perl 5.10.
+
+=cut
