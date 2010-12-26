@@ -44,7 +44,7 @@ sub _render {
     my %args = (app => $c->app, %{$c->stash});
 
     # Interpret again
-    if ($haml && $haml->compiled) {
+    if ( $c->app->mode ne 'development' &&  $haml && $haml->compiled) {
         $haml->helpers_arg($c);
 
         $$output = $haml->interpret(%args);
