@@ -11,9 +11,12 @@ use Text::Haml;
 
 our $VERSION = '0.990102';
 
+__PACKAGE__->attr(haml_args=>sub { return {}; });
+
 sub build {
     my $self = shift->SUPER::new(@_);
-
+    my %args=@_;
+    $self->haml_args(\%args);
     return sub { $self->_render(@_) }
 }
 
@@ -52,7 +55,7 @@ sub _render {
 
     # No cache
     else {
-        $haml ||= Text::Haml->new(escape => $ESCAPE);
+        $haml ||= Text::Haml->new(escape => $ESCAPE,%{$self->{haml_args}});
 
         $haml->helpers_arg($c);
         $haml->helpers($r->helper);
@@ -122,3 +125,4 @@ This program is free software, you can redistribute it and/or modify it under
 the same terms as Perl 5.10.
 
 =cut
+    

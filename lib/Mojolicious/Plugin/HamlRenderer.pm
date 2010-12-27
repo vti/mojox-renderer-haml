@@ -35,7 +35,7 @@ $self->plugin 'haml_renderer';
 
 Simple plugin to load HAML renderer into your Mojolicious app.
 
-=head1 AUTHOR
+    =head1 AUTHOR
 
 Viacheslav Tykhanovskyi, C<viacheslav.t@gmail.com>.
 
