@@ -110,13 +110,17 @@ MojoX::Renderer::Haml - Mojolicious renderer for HAML templates.
 This module is a renderer for L<HTML::Haml> templates. normally, you 
 just want to use L<Mojolicious::Plugin::HamlRenderer>.
 
+=head1 CREDITS
+
+Marcus Ramberg
+
 =head1 AUTHOR
 
 Viacheslav Tykhanovskyi, C<viacheslav.t@gmail.com>.
 
 =head1 COPYRIGHT
 
-Copyright (C) 2008-2009, Viacheslav Tykhanovskyi.
+Copyright (C) 2008-2010, Viacheslav Tykhanovskyi.
 
 This program is free software, you can redistribute it and/or modify it under
 the same terms as Perl 5.10.
