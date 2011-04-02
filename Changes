@@ -1,0 +1,10 @@
+1.0 
+
+    Updated helper => helpers to stop deprecation warning
+    Add docs for Haml renderer
+    Disable caching in development mode
+    Fix minor typos
+        
+0.990101 
+
+No changelog

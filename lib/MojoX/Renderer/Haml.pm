@@ -58,7 +58,7 @@ sub _render {
         $haml ||= Text::Haml->new(escape => $ESCAPE,%{$self->{haml_args}});
 
         $haml->helpers_arg($c);
-        $haml->helpers($r->helper);
+        $haml->helpers($r->helpers);
 
         # Try template
         if (-r $path) {
