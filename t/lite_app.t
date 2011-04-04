@@ -6,7 +6,7 @@ use warnings;
 use Test::More tests => 18;
 
 use Test::Mojo;
-use Mojo::Client;
+use Mojo::UserAgent;
 use Mojolicious::Lite;
 
 # Silence
@@ -25,7 +25,7 @@ get '/error' => 'error';
 get '/with_wrapper' => 'with_wrapper';
 
 my $t = Test::Mojo->new;
-$t->client(Mojo::Client->new);
+$t->ua(Mojo::UserAgent->new);
 
 # No cache
 $t->get_ok('/')->status_is(200)->content_is("<foo>1 + 1 &lt; 2</foo>\n");

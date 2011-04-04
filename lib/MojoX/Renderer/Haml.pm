@@ -9,7 +9,6 @@ use Mojo::ByteStream 'b';
 use Mojo::Exception;
 use Text::Haml;
 
-our $VERSION = '0.990102';
 
 __PACKAGE__->attr(haml_args=>sub { return {}; });
 

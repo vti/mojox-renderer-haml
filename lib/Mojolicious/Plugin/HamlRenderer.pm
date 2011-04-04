@@ -7,6 +7,9 @@ use base 'Mojolicious::Plugin';
 
 use MojoX::Renderer::Haml;
 
+our $VERSION = '1.0';
+
+
 sub register {
     my ($self, $app, $args) = @_;
 
@@ -35,9 +38,10 @@ $self->plugin 'haml_renderer';
 
 Simple plugin to load HAML renderer into your Mojolicious app.
 
-    =head1 AUTHOR
+=head1 AUTHOR
 
 Viacheslav Tykhanovskyi, C<viacheslav.t@gmail.com>.
+Marcus Ramberg, C<mramberg@cpan.org>.
 
 =head1 COPYRIGHT
 

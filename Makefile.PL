@@ -10,8 +10,8 @@ use ExtUtils::MakeMaker;
 my $mm = $ExtUtils::MakeMaker::VERSION;
 
 WriteMakefile(
-    NAME         => 'MojoX::Renderer::Haml',
-    VERSION_FROM => 'lib/MojoX/Renderer/Haml.pm',
+    NAME         => 'Mojolicious::Plugin::HamlRenderer',
+    VERSION_FROM => 'lib/Mojolicious/Plugin/HamlRenderer.pm',
     ABSTRACT     => 'Haml renderer for Mojolicious',
     AUTHOR       => 'Viacheslav Tykhanovskyi <vti@cpan.org>',
 
@@ -24,7 +24,7 @@ WriteMakefile(
                 resources => {
                     license => 'http://dev.perl.org/licenses/',
                     repository =>
-                      'http://github.com/vti/mojox-renderer-haml/tree/master'
+                      'http://github.com/marcusramberg/mojox-renderer-haml/tree/master'
                 },
                 no_index => {directory => [qw/t/]}
             },
