@@ -7,7 +7,7 @@ use base 'Mojolicious::Plugin';
 
 use MojoX::Renderer::Haml;
 
-our $VERSION = '1.0';
+our $VERSION = '1.1';
 
 
 sub register {
