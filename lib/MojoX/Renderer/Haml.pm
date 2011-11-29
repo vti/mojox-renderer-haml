@@ -26,8 +26,6 @@ my $ESCAPE = <<'EOF';
       : Mojo::ByteStream->new($v)->xml_escape->to_string;
 EOF
 
-my $data_template_method = do { require Mojolicious; Mojolicious->VERSION >= 1.3 ? 'get_data_template' : 'get_inline_template' };
-
 sub _render {
     my ($self, $r, $c, $output, $options) = @_;
 
@@ -67,7 +65,7 @@ sub _render {
         }
 
         # Try DATA section
-        elsif (my $d = $r->$data_template_method($c, $t)) {
+        elsif (my $d = $r->get_data_template($c, $t)) {
             $$output = $haml->render($d, %args);
         }
 
@@ -126,4 +124,3 @@ This program is free software, you can redistribute it and/or modify it under
 the same terms as Perl 5.10.
 
 =cut
-    

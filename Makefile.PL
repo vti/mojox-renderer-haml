@@ -37,7 +37,7 @@ WriteMakefile(
 
     PREREQ_PM => {
         'Text::Haml'  => '0.990103',
-        'Mojolicious' => '0.999924'
+        'Mojolicious' => '1.3'
     },
 
     test => {TESTS => 't/*.t t/*/*.t t/*/*/*.t t/*/*/*/*.t'}
