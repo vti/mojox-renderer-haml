@@ -65,7 +65,7 @@ sub _render {
         }
 
         # Try DATA section
-        elsif (my $d = $r->get_inline_template($c, $t)) {
+        elsif (my $d = $r->get_data_template($c, $t)) {
             $$output = $haml->render($d, %args);
         }
 
@@ -124,4 +124,3 @@ This program is free software, you can redistribute it and/or modify it under
 the same terms as Perl 5.10.
 
 =cut
-    
