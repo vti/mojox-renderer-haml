@@ -48,6 +48,7 @@ sub _render {
     if ( $c->app->mode ne 'development' &&  $haml && $haml->compiled) {
         $haml->helpers_arg($c);
 
+        $c->app->log->debug("Rendering cached $t.");
         $$output = $haml->interpret(%args);
     }
 
@@ -60,17 +61,19 @@ sub _render {
 
         # Try template
         if (-r $path) {
+            $c->app->log->debug("Rendering template '$t'.");
             $$output = $haml->render_file($path, %args);
         }
 
         # Try DATA section
         elsif (my $d = $r->get_data_template($c, $t)) {
+            $c->app->log->debug("Rendering template '$t' from DATA section.");
             $$output = $haml->render($d, %args);
         }
 
         # No template
         else {
-            $c->app->log->error(qq/Template "$t" missing or not readable./);
+            $c->app->log->debug(qq/Template "$t" missing or not readable./);
             return;
         }
     }
