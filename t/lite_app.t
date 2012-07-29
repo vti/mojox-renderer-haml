@@ -6,7 +6,7 @@ use warnings;
 use Test::More tests => 18;
 
 use Test::Mojo;
-use Mojo::Client;
+use Mojo::UserAgent;
 use Mojolicious::Lite;
 
 # Silence
@@ -25,7 +25,6 @@ get '/error' => 'error';
 get '/with_wrapper' => 'with_wrapper';
 
 my $t = Test::Mojo->new;
-$t->client(Mojo::Client->new);
 
 # No cache
 $t->get_ok('/')->status_is(200)->content_is("<foo>1 + 1 &lt; 2</foo>\n");
@@ -43,7 +42,7 @@ $t->get_ok('/with_wrapper')->status_is(200)->content_is("<foo>Hello!\n</foo>\n")
 $t->get_ok('/foo')->status_is(404)->content_is("Not found\n");
 
 # Error
-$t->get_ok('/error')->status_is(500)->content_like(qr/^Exception:\nsyntax error/);
+$t->get_ok('/error')->status_is(500)->content_like(qr/^Exception:.+syntax error/s);
 
 1;
 __DATA__
