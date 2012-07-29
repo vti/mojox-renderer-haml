@@ -31,6 +31,7 @@ sub _render {
     unless ($path = $c->stash->{'template_path'}) {
         $path = $r->template_path($options);
     }
+    return unless defined $path;
 
     my $list = join ', ', sort keys %{$c->stash};
     my $cache = b("$path($list)")->md5_sum->to_string;
@@ -55,7 +56,7 @@ sub _render {
         $haml ||= Text::Haml->new(escape => $ESCAPE);
 
         $haml->helpers_arg($c);
-        $haml->helpers($r->helper);
+        $haml->helpers($r->helpers);
 
         # Try template
         if (-r $path) {
@@ -63,33 +64,25 @@ sub _render {
         }
 
         # Try DATA section
-        elsif (my $d = $r->get_inline_template($c, $t)) {
+        elsif (my $d = $r->get_data_template($c, $t)) {
             $$output = $haml->render($d, %args);
         }
 
         # No template
         else {
             $c->app->log->error(qq/Template "$t" missing or not readable./);
-            $c->render_not_found;
             return;
         }
     }
 
     unless (defined $$output) {
         $$output = '';
-
-        my $e = Mojo::Exception->new($haml->error);
-
-        $c->app->log->error( qq/Template error in "$t": / . $haml->error);
-
-        $c->render_exception($e);
-
-        return 0;
+        die(qq/Template error in "$t": / . $haml->error);
     }
 
     $r->{_haml_cache}->{$cache} ||= $haml;
 
-    return 1;
+    return ref $$output ? die($$output) : 1;
 }
 
 1;
