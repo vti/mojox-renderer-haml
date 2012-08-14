@@ -1,0 +1,6 @@
+Revision history for MojoX-Renderer-Haml
+
+0.990103    2012-08-14
+
+    - updated code to newer Mojolicious versions.
+    - fixed RT #78333 (thanks ANDK for reporting)

@@ -9,7 +9,7 @@ use Mojo::ByteStream 'b';
 use Mojo::Exception;
 use Text::Haml;
 
-our $VERSION = '0.990102';
+our $VERSION = '0.990103';
 
 sub build {
     my $self = shift->SUPER::new(@_);
