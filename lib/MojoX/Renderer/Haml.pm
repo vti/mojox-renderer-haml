@@ -114,9 +114,11 @@ Marcus Ramberg
 
 Viacheslav Tykhanovskyi, C<viacheslav.t@gmail.com>.
 
+Currently maintained by Breno G. de Oliveira, C<garu@cpan.org>.
+
 =head1 COPYRIGHT
 
-Copyright (C) 2008-2010, Viacheslav Tykhanovskyi.
+Copyright (C) 2008-2012, Viacheslav Tykhanovskyi.
 
 This program is free software, you can redistribute it and/or modify it under
 the same terms as Perl 5.10.
