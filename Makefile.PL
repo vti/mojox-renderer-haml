@@ -11,7 +11,10 @@ my $mm = $ExtUtils::MakeMaker::VERSION;
 
 WriteMakefile(
     NAME         => 'MojoX::Renderer::Haml',
+
+    # NOTE: Please update the $VERSION in both modules!
     VERSION_FROM => 'lib/MojoX/Renderer/Haml.pm',
+
     ABSTRACT     => 'Haml renderer for Mojolicious',
     AUTHOR       => 'Viacheslav Tykhanovskyi <vti@cpan.org>',
 
@@ -37,7 +40,7 @@ WriteMakefile(
 
     PREREQ_PM => {
         'Text::Haml'  => '0.990103',
-        'Mojolicious' => '1.13'
+        'Mojolicious' => '1.3'
     },
 
     test => {TESTS => 't/*.t t/*/*.t t/*/*/*.t t/*/*/*/*.t'}
