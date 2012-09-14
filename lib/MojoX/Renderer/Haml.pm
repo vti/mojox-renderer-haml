@@ -69,7 +69,8 @@ sub _render {
         }
 
         # Try DATA section
-        elsif (my $d = $r->get_data_template($c, $t)) {
+        # as of Mojolicious 3.34 get_data_template discards $t
+        elsif (my $d = $r->get_data_template($options, $t)) {
             $c->app->log->debug("Rendering template '$t' from DATA section.");
             $$output = $haml->render($d, %args);
         }
