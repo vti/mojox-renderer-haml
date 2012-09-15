@@ -112,7 +112,8 @@ just want to use L<Mojolicious::Plugin::HamlRenderer>.
 
 =head1 CREDITS
 
-Marcus Ramberg
+Marcus Ramberg, C<mramberg@cpan.org>
+Randy Stauner, C<rwstauner@cpan.org>
 
 =head1 AUTHOR
 
