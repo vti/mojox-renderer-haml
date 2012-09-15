@@ -1,8 +1,9 @@
 Revision history for MojoX-Renderer-Haml
 
-2.000 2012-09-14 20:00:00Z
+2.000000 2012-09-15 16:00:00Z
 
     - Attempt to merge diversions between multiple forks
+      (and bump version in both modules to make it apparent).
     - Correct usage of get_data_template() to work with Mojolicious 3.34+
       Closes rt-79209 (Thanks to ANDK for reporting).
 

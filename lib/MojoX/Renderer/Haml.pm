@@ -1,4 +1,5 @@
 package MojoX::Renderer::Haml;
+our $VERSION = '2.000000';
 
 use warnings;
 use strict;
@@ -8,8 +9,6 @@ use base 'Mojo::Base';
 use Mojo::ByteStream 'b';
 use Mojo::Exception;
 use Text::Haml;
-
-our $VERSION = '2.000';
 
 __PACKAGE__->attr(haml_args=>sub { return {}; });
 

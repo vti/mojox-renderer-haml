@@ -1,4 +1,5 @@
 package Mojolicious::Plugin::HamlRenderer;
+our $VERSION = '2.000000';
 
 use strict;
 use warnings;
@@ -6,9 +7,6 @@ use warnings;
 use base 'Mojolicious::Plugin';
 
 use MojoX::Renderer::Haml;
-
-our $VERSION = '2.000';
-
 
 sub register {
     my ($self, $app, $args) = @_;
