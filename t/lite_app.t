@@ -6,7 +6,6 @@ use warnings;
 use Test::More tests => 18;
 
 use Test::Mojo;
-use Mojo::UserAgent;
 use Mojolicious::Lite;
 
 # Silence
