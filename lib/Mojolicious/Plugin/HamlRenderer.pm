@@ -33,7 +33,7 @@ Mojolicious::Plugin::HamlRenderer - Load HAML renderer
     plugin 'haml_renderer';
 
     # or normal app
-    $self->plugin 'haml_renderer';
+    $self->plugin('haml_renderer');
 
 =head2 DESCRIPTION
 

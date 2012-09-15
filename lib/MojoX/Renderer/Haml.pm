@@ -96,7 +96,7 @@ sub _render {
 
 =head2 NAME
 
-MojoX::Renderer::Haml - Mojolicious renderer for HAML templates. 
+MojoX::Renderer::Haml - Mojolicious renderer for HAML templates.
 
 =head2 SYNOPSIS
 
