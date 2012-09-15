@@ -10,10 +10,10 @@ use ExtUtils::MakeMaker;
 my $mm = $ExtUtils::MakeMaker::VERSION;
 
 WriteMakefile(
-    NAME         => 'MojoX::Renderer::Haml',
+    NAME         => 'Mojolicious::Plugin::HamlRenderer',
 
     # NOTE: Please update the $VERSION in both modules!
-    VERSION_FROM => 'lib/MojoX/Renderer/Haml.pm',
+    VERSION_FROM => 'lib/Mojolicious/Plugin/HamlRenderer.pm',
 
     ABSTRACT     => 'Haml renderer for Mojolicious',
     AUTHOR       => 'Viacheslav Tykhanovskyi <vti@cpan.org>',
