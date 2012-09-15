@@ -3,6 +3,13 @@
 use strict;
 use warnings;
 
-use Test::More tests => 1;
+use Test::More;
 
-use_ok('MojoX::Renderer::Haml');
+my @modules = qw(
+  MojoX::Renderer::Haml
+  Mojolicious::Plugin::HamlRenderer
+);
+
+plan tests => scalar @modules;
+
+use_ok($_) for @modules;

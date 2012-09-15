@@ -1,4 +1,5 @@
 package Mojolicious::Plugin::HamlRenderer;
+our $VERSION = '2.000000';
 
 use strict;
 use warnings;
@@ -30,7 +31,7 @@ Mojolicious::Plugin::HamlRenderer - Load HAML renderer
     plugin 'haml_renderer';
 
     # or normal app
-    $self->plugin 'haml_renderer';
+    $self->plugin('haml_renderer');
 
 =head2 DESCRIPTION
 

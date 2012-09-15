@@ -1,4 +1,5 @@
 package MojoX::Renderer::Haml;
+our $VERSION = '2.000000';
 
 use warnings;
 use strict;
@@ -9,11 +10,12 @@ use Mojo::ByteStream 'b';
 use Mojo::Exception;
 use Text::Haml;
 
-our $VERSION = '0.990103';
+__PACKAGE__->attr(haml_args=>sub { return {}; });
 
 sub build {
     my $self = shift->SUPER::new(@_);
-
+    my %args=@_;
+    $self->haml_args(\%args);
     return sub { $self->_render(@_) }
 }
 
@@ -54,7 +56,7 @@ sub _render {
 
     # No cache
     else {
-        $haml ||= Text::Haml->new(escape => $ESCAPE);
+        $haml ||= Text::Haml->new(escape => $ESCAPE,%{$self->{haml_args}});
 
         $haml->helpers_arg($c);
         $haml->helpers($r->helpers);
@@ -66,7 +68,8 @@ sub _render {
         }
 
         # Try DATA section
-        elsif (my $d = $r->get_data_template($c, $t)) {
+        # as of Mojolicious 3.34 get_data_template discards $t
+        elsif (my $d = $r->get_data_template($options, $t)) {
             $c->app->log->debug("Rendering template '$t' from DATA section.");
             $$output = $haml->render($d, %args);
         }
@@ -92,7 +95,7 @@ sub _render {
 
 =head2 NAME
 
-MojoX::Renderer::Haml - Mojolicious renderer for HAML templates. 
+MojoX::Renderer::Haml - Mojolicious renderer for HAML templates.
 
 =head2 SYNOPSIS
 
@@ -108,7 +111,8 @@ just want to use L<Mojolicious::Plugin::HamlRenderer>.
 
 =head1 CREDITS
 
-Marcus Ramberg
+Marcus Ramberg, C<mramberg@cpan.org>
+Randy Stauner, C<rwstauner@cpan.org>
 
 =head1 AUTHOR
 
