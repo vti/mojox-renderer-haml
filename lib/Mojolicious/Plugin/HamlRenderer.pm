@@ -1,5 +1,5 @@
 package Mojolicious::Plugin::HamlRenderer;
-our $VERSION = '2.000000';
+our $VERSION = '2.000001';
 
 use strict;
 use warnings;
@@ -21,11 +21,11 @@ sub register {
 
 1;
 
-=head2 NAME
+=head1 NAME
 
 Mojolicious::Plugin::HamlRenderer - Load HAML renderer
 
-=head2 SYNOPSIS
+=head1 SYNOPSIS
 
     # lite app
     plugin 'haml_renderer';
@@ -33,11 +33,11 @@ Mojolicious::Plugin::HamlRenderer - Load HAML renderer
     # or normal app
     $self->plugin('haml_renderer');
 
-=head2 DESCRIPTION
+=head1 DESCRIPTION
 
 Simple plugin to load HAML renderer into your Mojolicious app.
 
-=head2 SEE ALSO
+=head1 SEE ALSO
 
 L<MojoX::Renderer::Haml>, L<Text::Haml>.
 

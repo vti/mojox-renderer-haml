@@ -1,5 +1,5 @@
 package MojoX::Renderer::Haml;
-our $VERSION = '2.000000';
+our $VERSION = '2.000001';
 
 use warnings;
 use strict;
@@ -93,18 +93,18 @@ sub _render {
 
 1;
 
-=head2 NAME
+=head1 NAME
 
 MojoX::Renderer::Haml - Mojolicious renderer for HAML templates.
 
-=head2 SYNOPSIS
+=head1 SYNOPSIS
 
    my $haml = MojoX::Renderer::Haml->build(%$args, mojo => $app);
 
    # Add "haml" handler
    $app->renderer->add_handler(haml => $haml);
 
-=head2 DESCRIPTION
+=head1 DESCRIPTION
 
 This module is a renderer for L<HTML::Haml> templates. normally, you 
 just want to use L<Mojolicious::Plugin::HamlRenderer>.
@@ -112,6 +112,7 @@ just want to use L<Mojolicious::Plugin::HamlRenderer>.
 =head1 CREDITS
 
 Marcus Ramberg, C<mramberg@cpan.org>
+
 Randy Stauner, C<rwstauner@cpan.org>
 
 =head1 AUTHOR

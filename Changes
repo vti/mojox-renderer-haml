@@ -1,6 +1,11 @@
 Revision history for Mojolicious-Plugin-HamlRenderer
 (formerly MojoX-Renderer-Haml)
 
+2.000001 2012-09-19 13:00:00Z
+
+    [Documentation]
+    - Change top-level pod headings to be 'head1' instead of 'head2'
+
 2.000000 2012-09-15 16:00:00Z
 
     - Attempt to merge diversions between multiple forks
