@@ -1,5 +1,5 @@
 package Mojolicious::Plugin::HamlRenderer;
-our $VERSION = '2.000000';
+our $VERSION = '2.000001';
 
 use strict;
 use warnings;
